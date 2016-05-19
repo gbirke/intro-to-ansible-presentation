@@ -1,0 +1,20 @@
+{
+  "name": "ansible-presentation",
+  "version": "1.0.0",
+  "description": "A presentation about Ansible",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-html": "pug -o build src/jade/index.jade",
+    "build-resources": "cp -r src/js build && cp -r src/css build && cp -r src/lib build",
+    "build": "npm build-resources && npm build-html",
+    "watch": "pug -w -P -o build src/jade/index.jade"
+  },
+  "private": true,
+  "author": "Gabriel Birke <gb@birke-software.de>",
+  "license": "CC-BY-SA-4.0",
+  "dependencies": {
+    "pug": "^2.0.0-alpha7",
+    "pug-cli": "^1.0.0-alpha5"
+  }
+}

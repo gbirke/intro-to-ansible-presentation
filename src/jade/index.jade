@@ -1,0 +1,84 @@
+extends ./layout.jade
+
+block content
+
+	section
+		h1 Ansible
+		h2 Remote configuration tool
+
+	section
+		section
+			h2 Typical developer
+			h3 What do you configure?
+			aside.notes What are your first steps on a new machine?
+
+		section
+			h3 For Example
+			p Local development environment (IDE, Editor, SSH, Git)
+			p Virtual machines
+			p Remote servers / Cloud instances
+			p ...
+		
+	section
+		section
+			h2 Why use it?
+			p.fragment Documentation
+			p.fragment Repeatability
+			p.fragment Reuse
+			p.fragment OS abstraction
+
+		section
+			h2 Documentation
+			p never forget
+			ul
+				li obscure settings
+				li all installed packages
+				li PHP extensions
+				li permissions
+
+		section
+			h2 Put your configuration in version control!
+							
+		section
+			h2 Repeatability
+			p Run on multiple servers
+			p Idempotence
+			blockquote TODO Wikipedia definition idempotence
+
+		section
+			h2 Reuse
+			p Define different server roles (Database, Web, Proxy, etc.)
+			p Modularize your configuration to run based on roles
+		
+	section
+		h2 Buzzword Time!
+		h3: a(href='https://en.wikipedia.org/wiki/Infrastructure_as_Code') Infrastructure as code
+
+
+	section
+		h2 Other Software
+		p Chef
+		p Puppet
+		p: a(href='https://en.wikipedia.org/wiki/Comparison_of_open-source_configuration_management_software') Many more ...
+
+	section
+		h2 Why Ansible
+		p.fragment Agent-Less
+		p.fragment Ordered execution
+		p.fragment YAML syntax
+
+	section
+		h4 Example 1: All your dotfiles
+		pre
+			include ../../examples/dotfiles/all_dotfiles.yml
+	
+	section   
+		h4 Example 1: All your dotfiles
+		pre
+			| $ ansible-playbook -i servers.yml all_dotfiles.yml
+			|  
+			| TODO: Output
+
+	section Legal Stuff
+		p Presentation Code by reveal.js
+

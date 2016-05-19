@@ -1,0 +1,14 @@
+---
+tasks:
+  - name: Create .dotfiles directory
+    file: path=~/.dotfiles state=directory
+  - name: Copy dotfiles
+    copy: src=files/dotfiles dest=~/.dotfiles
+  - name: Link configuration files
+    file: src=.dotfiles/{item} dest={item} state=link
+    items:
+      - .gitconfig
+      - .vimrc
+      - .vim
+      - .bashrc
+      - .aliases
