@@ -14,7 +14,7 @@ block content
 
 		section
 			h3 For Example
-			p Local development environment (IDE, Editor, SSH, Git)
+			p Local development environment: IDE, Editor, SSH, Git
 			p Virtual machines
 			p Remote servers / Cloud instances
 			p ...
@@ -83,8 +83,23 @@ block content
 	section
 		pre
 			| - name: Check out dotfiles repo
-			|   git: "repo=https://github.com/gbirke/dotfiles.git dest={{ ansible_env.HOME }}/.dotfiles"
-		aside.notes Explain variables, why are the quotes necessary
+			|   git: "repo=https://github.com/gbirke/dotfiles.git dest=.dotfiles"
+		aside.notes Explain why are the quotes are necessary. 
+			| Explain git idempotence - git command is "clone" and and "pull" in one by default,
+			| but that can be changed with additional parameters
+
+	section   
+		h4 Example 1: All your dotfiles
+		pre
+			| - name: Link configuration files
+			|   file: "src=.dotfiles/{{ item }} dest={{ item }} state=link"
+			|   items:
+			|     - .gitconfig
+			|     - .vimrc
+			|     - .vim
+			|     - .bashrc
+			|     - .aliases
+		aside.notes Explain items - the only way to iterate
 
 	section   
 		h4 Example 1: All your dotfiles
@@ -92,19 +107,6 @@ block content
 			| $ ansible-playbook -i servers.yml all_dotfiles.yml
 			|  
 			| TODO: Output
-
-	section   
-		h4 Example 1: All your dotfiles
-		pre
-			| - name: Link configuration files
-			| 	file: "src={{ ansible_env.HOME }}/{{ item }} dest={{ item }} state=link"
-			| 	items:
-			| 		- .gitconfig
-			| 		- .vimrc
-			| 		- .vim
-			| 		- .bashrc
-			| 		- .aliases
-		aside.notes Explain items - the only way to iterate
 
 	section
 		h4 Example 1: All your dotfiles
