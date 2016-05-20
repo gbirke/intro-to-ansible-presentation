@@ -4,9 +4,9 @@ tasks:
     apt: pkg=git state=present
     become: true
   - name: Check out dotfiles repo
-    git: repo=https://github.com/gbirke/dotfiles.git dest=~/.dotfiles
+    git: "repo=https://github.com/gbirke/dotfiles.git dest={{ ansible_env.HOME }}/.dotfiles"
   - name: Link configuration files
-    file: src=.dotfiles/{item} dest={item} state=link
+    file: "src={{ ansible_env.HOME }}/.dotfiles/{{ item }} dest={{ item }} state=link"
     items:
       - .gitconfig
       - .vimrc

@@ -3,9 +3,9 @@ tasks:
   - name: Check out dotfiles locally
     local_action: git repo=https://github.com/gbirke/dotfiles.git dest=/tmp/.dotfiles
   - name: Copy dotfiles
-    copy: src=/tmp/.dotfiles dest=~/.dotfiles
+    copy: "src=/tmp/.dotfiles dest={{ ansible_env.HOME }}/.dotfiles"
   - name: Link configuration files
-    file: src=.dotfiles/{item} dest={item} state=link
+    file: "src={{ ansible_env.HOME }}/{{ item }} dest={{ item }} state=link"
     items:
       - .gitconfig
       - .vimrc
