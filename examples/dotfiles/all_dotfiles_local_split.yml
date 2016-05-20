@@ -1,13 +1,13 @@
 ---
 tasks:
-    # cfmt: fragment.dimcode
+    # cfmt: split 
   - name: Check out dotfiles locally
     git: repo=https://github.com/gbirke/dotfiles.git dest=/tmp/.dotfiles
     delegate_to: localhost
-    # cfmt: fragment.dimcode
+    # cfmt: split
   - name: Copy dotfiles
     copy: "src=/tmp/.dotfiles dest=.dotfiles"
-    # cfmt: fragment.dimcode
+    # cfmt: split
   - name: Link configuration files
     file: "src=.dotfiles/{{ item }} dest={{ item }} state=link"
     items:
@@ -16,4 +16,4 @@ tasks:
       - .vim
       - .bashrc
       - .aliases
-   # cfmt: fragment.dimcode
+   # cfmt: split

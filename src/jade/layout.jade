@@ -3,6 +3,9 @@ html
 	head
 		link(rel='stylesheet', href='css/reveal.css')
 		link(rel='stylesheet', href='css/theme/solarized.css')
+		style
+			| .fragment.visible:not(.current-fragment).no-display { display:none; }
+			| .fragment.visible.current-fragment.no-display { display:inline; }
 		block title
 			title Introduction to Ansible
   
