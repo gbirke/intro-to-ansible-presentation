@@ -72,12 +72,27 @@ block content
 		pre
 			include ../../examples/dotfiles/all_dotfiles.yml
 	
+	section
+		p TODO: comment every line
+
 	section   
 		h4 Example 1: All your dotfiles
 		pre
 			| $ ansible-playbook -i servers.yml all_dotfiles.yml
 			|  
 			| TODO: Output
+
+	section
+		h4 Example 1: All your dotfiles
+		pre
+			include ../../examples/dotfiles/all_dotfiles.yml
+		aside.notes What's the problem with this setup? Hint: At least two. (Sudo permission needed and only works on Debian-based hosts).
+
+	section
+		h4 Example 1: Look Ma, no sudo!
+		pre
+			include ../../examples/dotfiles/all_dotfiles_local.yml
+		aside.notes What's the problem with this setup?
 
 	section Legal Stuff
 		p Presentation Code by reveal.js

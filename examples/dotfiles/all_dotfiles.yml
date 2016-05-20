@@ -1,9 +1,10 @@
 ---
 tasks:
-  - name: Create .dotfiles directory
-    file: path=~/.dotfiles state=directory
-  - name: Copy dotfiles
-    copy: src=files/dotfiles dest=~/.dotfiles
+  - name: Install Git
+    apt: pkg=git state=present
+    become: true
+  - name: Check out dotfiles repo
+    git: repo=https://github.com/gbirke/dotfiles.git dest=~/.dotfiles
   - name: Link configuration files
     file: src=.dotfiles/{item} dest={item} state=link
     items:

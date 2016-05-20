@@ -1,0 +1,14 @@
+---
+tasks:
+  - name: Check out dotfiles locally
+    local_action: git repo=https://github.com/gbirke/dotfiles.git dest=/tmp/.dotfiles
+  - name: Copy dotfiles
+    copy: src=/tmp/.dotfiles dest=~/.dotfiles
+  - name: Link configuration files
+    file: src=.dotfiles/{item} dest={item} state=link
+    items:
+      - .gitconfig
+      - .vimrc
+      - .vim
+      - .bashrc
+      - .aliases
