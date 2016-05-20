@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-html": "pug -o build src/jade/index.jade",
-    "build-resources": "cp -r src/js build && cp -r src/css build && cp -r src/lib build",
+    "build-resources": "cp -r src/js build && cp -r src/css build && cp -r src/lib build && cp -r src/img build",
     "build": "npm build-resources && npm build-html",
     "watch": "pug -w -P -o build src/jade/index.jade"
   },
