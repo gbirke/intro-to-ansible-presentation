@@ -73,7 +73,17 @@ block content
 			include ../../examples/dotfiles/all_dotfiles.yml
 	
 	section
-		p TODO: comment every line
+		pre
+			| - name: Install Git
+			|   apt: pkg=git state=present
+			|	become: true
+		aside.notes Mention idempotence, explain become
+
+	section
+		pre
+			| - name: Check out dotfiles repo
+			|   git: "repo=https://github.com/gbirke/dotfiles.git dest={{ ansible_env.HOME }}/.dotfiles"
+		aside.notes Explain variables, why are the quotes necessary
 
 	section   
 		h4 Example 1: All your dotfiles
@@ -81,6 +91,19 @@ block content
 			| $ ansible-playbook -i servers.yml all_dotfiles.yml
 			|  
 			| TODO: Output
+
+	section   
+		h4 Example 1: All your dotfiles
+		pre
+			| - name: Link configuration files
+			| 	file: "src={{ ansible_env.HOME }}/{{ item }} dest={{ item }} state=link"
+			| 	items:
+			| 		- .gitconfig
+			| 		- .vimrc
+			| 		- .vim
+			| 		- .bashrc
+			| 		- .aliases
+		aside.notes Explain items - the only way to iterate
 
 	section
 		h4 Example 1: All your dotfiles
