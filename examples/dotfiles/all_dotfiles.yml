@@ -1,15 +1,15 @@
 ---
-tasks:
-  - name: Install Git
-    apt: pkg=git state=present
-    become: true
-  - name: Check out dotfiles repo
-    git: "repo=https://github.com/gbirke/dotfiles.git dest=.dotfiles"
-  - name: Link configuration files
-    file: "src=.dotfiles/{{ item }} dest={{ item }} state=link"
-    items:
-      - .gitconfig
-      - .vimrc
-      - .vim
-      - .bashrc
-      - .aliases
+- hosts: all
+  tasks:
+    - name: Install Git
+      apt: pkg=git state=present
+      become: true
+    - name: Check out dotfiles repo
+      git: "repo=https://gist.github.com/f492cd962f3f5d442fc79c5893774a6a.git dest=.dotfiles"
+    - name: Link configuration files
+      file: "src=.dotfiles/{{ item }} dest={{ item }} state=link"
+      items:
+        - .gitconfig
+        - .gitignore_global
+        - .vimrc
+        - .alias

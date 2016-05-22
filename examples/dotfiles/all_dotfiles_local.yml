@@ -1,15 +1,19 @@
 ---
-tasks:
-  - name: Check out dotfiles locally
-    git: repo=https://github.com/gbirke/dotfiles.git dest=/tmp/.dotfiles
-    delegate_to: localhost
+- hosts: all
+  vars:
+    gist_id: f492cd962f3f5d442fc79c5893774a6a
+    archive_id: c9121e92d50e696b31da1e66ccd28b967caf4b1b
+  tasks:
+  - name: Get dotfiles as archive files from repo
+    get_url: 
+      url: "https://gist.github.com/gbirke/{{ gist_id }}/archive/{{ archive_id }}.tar.gz"
+      dest: /tmp/dotfiles.tar.gz
+  - name: Extract archive
+    unarchive: src=/tmp/dotfiles.tar.gz dest=/tmp copy=no
   - name: Copy dotfiles
-    copy: "src=/tmp/.dotfiles dest=.dotfiles"
-  - name: Link configuration files
-    file: "src=.dotfiles/{{ item }} dest={{ item }} state=link"
+    command: "cp /tmp/{{ gist_id }}-{{ archive_id }}/{{ item }} ./{{ item }}"
     items:
       - .gitconfig
+      - .gitignore_global
       - .vimrc
-      - .vim
-      - .bashrc
-      - .aliases
+      - .alias

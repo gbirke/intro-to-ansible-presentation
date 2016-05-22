@@ -69,6 +69,7 @@ block content
 		p.fragment Agent-Less
 		p.fragment Ordered execution
 		p.fragment YAML syntax
+		aside.notes Only SSH and Python are needed on the target side, everything else (git) can be bootstrapped
 
 	section
 		h4 Example 1: All your dotfiles
@@ -122,6 +123,11 @@ block content
 		h4 Example 1: Look Ma, no sudo!
 		pre
 			include ../../examples/dotfiles/all_dotfiles_local.yml
+
+	section
+		h4 Example 1: Look Ma, no sudo!
+		p TODO: explain get_url, unarchive (it can deal with all arhcives as long as the unarchiver package is installed)
+		p TODO: explain command, pros (readily available) and cons (not portable)
 
 	section
 		h2 That's all!
