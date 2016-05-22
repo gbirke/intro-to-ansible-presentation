@@ -46,12 +46,34 @@ block content
 			p Run on multiple servers
 			p Idempotence
 			blockquote TODO Wikipedia definition idempotence
-
+			
 		section
 			h2 Reuse
 			p Define different server roles - Database, Web, Proxy, etc.
-			p Modularize your configuration to run based on roles
-		
+			p Modularize your configuration to run differently, based on server role
+
+		section
+			h2 Repeatability != Automation
+			p: img(src="http://imgs.xkcd.com/comics/automation.png")
+			p Source: 
+				a(href="https://xkcd.com/1319/") https://xkcd.com/1319/
+			aside.notes If you are thinking "This will save me so much time!" ... you are probably wrong, but CM is not about automation.
+
+		section
+			h2 Really, don't do it for the automation 
+			p: img(src="http://imgs.xkcd.com/comics/is_it_worth_the_time.png")
+			p Except if you are a professional administrator who sets up 5 servers a day.
+			p Source: 
+				a(href="https://xkcd.com/1205/") https://xkcd.com/1205/
+
+	section
+		h2 Configuration management software is like unit tests for infrastructure
+		aside.notes
+			ul
+				li Configuration describes how the system SHOULD work and look like
+				li Unless you are bearded UNIX guru creating infrastructure is an iterative process (oh, must set this and install this package)
+				li Gives you a safety net in case something horrible happens to a server
+
 	section
 		h2 Buzzword Time!
 		h3: a(href='https://en.wikipedia.org/wiki/Infrastructure_as_Code') Infrastructure as code
@@ -69,7 +91,7 @@ block content
 		p.fragment Agent-Less
 		p.fragment Ordered execution
 		p.fragment YAML syntax
-		aside.notes Only SSH and Python are needed on the target side, everything else (git) can be bootstrapped
+		aside.notes Only SSH is needed on the target side, everything else needed by the playbooks (Python, git, unarchive utilities) can be bootstrapped
 
 	section
 		h4 Example 1: All your dotfiles
@@ -128,6 +150,11 @@ block content
 		h4 Example 1: Look Ma, no sudo!
 		p TODO: explain get_url, unarchive (it can deal with all arhcives as long as the unarchiver package is installed)
 		p TODO: explain command, pros (readily available) and cons (not portable)
+
+	section
+		p TODO Example of LAMP server with 2 vhosts, created with includes and templates
+		aside.notes Explain that you should have a look at the roles available. And find the right balance between configurable roles and just using yoru own config files.
+		aside.notes Ask what tasks are left out when configuring MySQL (root password, database creation, user creation, performance settings), web server and PHP (install extensions (which one do you usually forget?), configure PHP-FPM)
 
 	section
 		h2 That's all!
