@@ -148,13 +148,17 @@ block content
 
 	section
 		h4 Example 1: Look Ma, no sudo!
-		p TODO: explain get_url, unarchive (it can deal with all arhcives as long as the unarchiver package is installed)
+		p TODO: explain get_url, unarchive (it can deal with all archives as long as the unarchiver package is installed)
 		p TODO: explain command, pros (readily available) and cons (not portable)
 
 	section
 		p TODO Example of LAMP server with 2 vhosts, created with includes and templates
+		p TODO Show directory structure
 		aside.notes Explain that you should have a look at the roles available. And find the right balance between configurable roles and just using yoru own config files.
 		aside.notes Ask what tasks are left out when configuring MySQL (root password, database creation, user creation, performance settings), web server and PHP (install extensions (which one do you usually forget?), configure PHP-FPM)
+		aside.notes Explain include, that it allows parameterization
+		aside.notes Explain templates, how all variables in the current scope are available
+		aside.notes Explain handlers: Tasks that run only once per playbook, but can be triggered by several tasks
 
 	section
 		h2 That's all!
