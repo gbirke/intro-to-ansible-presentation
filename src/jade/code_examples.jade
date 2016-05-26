@@ -1,0 +1,14 @@
+extends ./layout.jade
+
+block content
+	each file in files
+		section
+			section
+				pre
+					code= file.code
+			each codeSection in file.sections
+				section
+					pre
+						code= codeSection.code
+				if codeSection.vars && codeSection.vars.note
+					aside.notes= codeSection.vars.note

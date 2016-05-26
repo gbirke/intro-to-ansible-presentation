@@ -1,0 +1,66 @@
+	section
+		h4 Example 1: All your dotfiles
+		pre
+			include ../../examples/dotfiles/all_dotfiles.yml
+	
+	section
+		pre
+			| - name: Install Git
+			|   apt: pkg=git state=present
+			|	become: true
+		aside.notes Mention idempotence, explain become
+
+	section
+		pre
+			| - name: Check out dotfiles repo
+			|   git: "repo=https://github.com/gbirke/dotfiles.git dest=.dotfiles"
+		aside.notes Explain why are the quotes are necessary. 
+			| Explain git idempotence - git command is "clone" and and "pull" in one by default,
+			| but that can be changed with additional parameters
+
+	section   
+		h4 Example 1: All your dotfiles
+		pre
+			| - name: Link configuration files
+			|   file: "src=.dotfiles/{{ item }} dest={{ item }} state=link"
+			|   items:
+			|     - .gitconfig
+			|     - .vimrc
+			|     - .vim
+			|     - .bashrc
+			|     - .aliases
+		aside.notes Explain items - the only way to iterate
+
+	section   
+		h4 Example 1: All your dotfiles
+		pre
+			| $ ansible-playbook -i servers.yml all_dotfiles.yml
+			|  
+			| TODO: Output
+
+	section
+		h4 Example 1: All your dotfiles
+		pre
+			include ../../examples/dotfiles/all_dotfiles.yml
+		aside.notes What's the problem with this setup? Hint: At least two. (Sudo permission needed and only works on Debian-based hosts).
+		aside.notes There is also a portability problem with the home folder, as explained
+			a(href='http://stackoverflow.com/a/33787083/130121') on Stackoverflow
+
+	section
+		h4 Example 1: Look Ma, no sudo!
+		pre
+			include ../../examples/dotfiles/all_dotfiles_local.yml
+
+	section
+		h4 Example 1: Look Ma, no sudo!
+		p TODO: explain get_url, unarchive (it can deal with all archives as long as the unarchiver package is installed)
+		p TODO: explain command, pros (readily available) and cons (not portable)
+
+	section
+		p TODO Example of LAMP server with 2 vhosts, created with includes and templates
+		p TODO Show directory structure
+		aside.notes Explain that you should have a look at the roles available. And find the right balance between configurable roles and just using yoru own config files.
+		aside.notes Ask what tasks are left out when configuring MySQL (root password, database creation, user creation, performance settings), web server and PHP (install extensions (which one do you usually forget?), configure PHP-FPM)
+		aside.notes Explain include, that it allows parameterization
+		aside.notes Explain templates, how all variables in the current scope are available
+		aside.notes Explain handlers: Tasks that run only once per playbook, but can be triggered by several tasks

@@ -1,0 +1,16 @@
+doctype html
+html
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+		block title
+			title Introduction to Ansible
+
+	body
+		each  name in [ 'dotfiles/all_dotfiles.yml', 'dotfiles/all_dotfiles_local.yml', 'lamp/lamp.yml', 'lamp/create_vhost.yml' ]
+			section
+				h2= name
+				pre
+					code
+						each part in files[name].parts
+							span(class= part.section ? 'example' : '')= part.code
