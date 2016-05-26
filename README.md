@@ -2,7 +2,7 @@
 
 This is a presentation on the configuration management tool [Ansible](https://www.ansible.com/).
 
-The HTML code is built with [Pug](https://github.com/pugjs/pug) (formerly known as Jade), as suggested by [this smashing tutorial](https://medium.com/@jakeout/deprecate-keynote-78f0f09424dd).
+The HTML code is built with [Pug](https://github.com/pugjs/pug) (formerly known as Jade), as suggested by [this tutorial](https://medium.com/@jakeout/deprecate-keynote-78f0f09424dd).
 
 ## Building the HTML
 Run the commands
