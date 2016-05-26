@@ -1,0 +1,12 @@
+<VirtualHost *:80>
+    DocumentRoot "/var/www/{{ host_name }}/public_html"
+    ServerName {{ host_name }}
+
+    <Directory /var/www/{{ host_name }}/public_html/>
+        Options Indexes FollowSymLinks
+        Order deny,allow
+        Allow from all
+    </Directory>
+
+    ErrorLog /var/log/apache2/{{ host_name }}.error.log
+</VirtualHost>

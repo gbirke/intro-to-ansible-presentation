@@ -1,0 +1,21 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: Install packages
+      apt: "pkg={{ item }} state=present"
+      items:
+          - apache2
+          - mysql-client
+          - mysql-server
+          - php5
+          - libapache2-mod-php5
+    - name: Create vhost example1.dev
+      include: create_vhost.yml host_name=example1.dev
+
+    - name: Create vhost example2.dev
+      include: create_vhost.yml host_name=example2.dev
+
+  handlers:
+    - name: restart apache
+      service: name=apache2 state=restarted
