@@ -15,7 +15,7 @@
 #codeslides section .example {
     display:block;
     transform-origin:center left;
-    transition: 1s ease-in-out;
+    transition: .66s ease-in-out;
 }
 
 #codeslides section .example.current {
