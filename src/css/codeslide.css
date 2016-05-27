@@ -1,0 +1,9 @@
+#codeslides section {
+    transition: 1s ease-in;
+    height: 1px;
+    overflow: hidden;
+}
+
+#codeslides section.current {
+    height:auto;
+}
