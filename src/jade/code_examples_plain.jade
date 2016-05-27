@@ -7,13 +7,13 @@ html
 		script(src='js/codeslide.js')
 		link(rel='stylesheet' href='css/codeslide.css')
 		block title
-			title Introduction to Ansible
+			title Introduction to Ansible - Code examples
 
 	body
 		#codeslides
 			each  name in [ 'dotfiles/all_dotfiles.yml', 'dotfiles/all_dotfiles_local.yml', 'lamp/lamp.yml', 'lamp/create_vhost.yml', 'lamp/templates/vhost.j2' ]
 				section
-					h2= name
+					h2.filename= name
 					pre
 						code
 							each part in files[name].parts

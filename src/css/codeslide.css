@@ -1,3 +1,4 @@
+/* Presentation classes */
 #codeslides section {
     height: 1px;
     overflow: hidden;
@@ -18,8 +19,31 @@
 }
 
 #codeslides section .example.current {
-    background-color: rgba(50,55,55,.85);
-    color: white;
+    background-color: #002b36;
+    color: #839496;
     padding: 10px;
-    transform: scale(1.8);
+    transform: scale(1.5);
+}
+
+/* Make stuff look nicer */
+
+body {
+    background-color: #fdf6e3;
+    color: #586e75;
+    padding:15px 20px 0 20px;
+}
+
+h2.filename {
+	margin: 0 0 20px 0;
+	font-family: "League Gothic", Impact, sans-serif;
+	font-weight: normal;
+	line-height: 1.2;
+	letter-spacing: normal;
+	text-transform: uppercase;
+	text-shadow: none;
+	word-wrap: break-word;
+}
+
+code {
+    font-size: 140%;
 }
