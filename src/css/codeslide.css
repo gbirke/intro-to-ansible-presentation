@@ -1,9 +1,25 @@
 #codeslides section {
-    transition: 1s ease-in;
     height: 1px;
     overflow: hidden;
+    box-sizing: border-box;
+    opacity: 0;
 }
 
 #codeslides section.current {
     height:auto;
+    opacity: 1;
+    padding-bottom: 40px;
+}
+
+#codeslides section .example {
+    display:block;
+    transform-origin:center left;
+    transition: 1s ease-in-out;
+}
+
+#codeslides section .example.current {
+    background-color: rgba(50,55,55,.85);
+    color: white;
+    padding: 10px;
+    transform: scale(1.8);
 }
