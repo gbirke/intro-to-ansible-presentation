@@ -8,7 +8,7 @@
     "build-html": "pug -o build src/jade/index.jade",
     "build-html-code": "pug -O build/example.json -P -o build src/jade/code_examples_plain.jade",
     "build-resources": "cp -r src/js build && cp -r src/css build && cp -r src/lib build && cp -r src/img build && cp -r src/plugin build",
-    "build-examplecode-json": "cd examples && codemarkers -p -o ../build/example.json '**/*.yml'",
+    "build-examplecode-json": "cd examples && codemarkers -p -o ../build/example.json '**/*.{yml,j2}'",
     "build": "npm build-resources && npm build-html",
     "watch": "pug -w -P -o build src/jade/index.jade"
   },

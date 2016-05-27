@@ -10,7 +10,9 @@
     # cm: section=CheckoutDotfileRepo
     # cm: json={"notes":"Explain why are the quotes are necessary. Explain git idempotence - git command is \"clone\" and and \"pull\" in one by default, but that can be changed with additional parameters"}
     - name: Check out dotfiles repo
-      git: "repo=https://gist.github.com/f492cd962f3f5d442fc79c5893774a6a.git dest=.dotfiles"
+      git:
+          repo: https://gist.github.com/f492cd962f3f5d442fc79c5893774a6a.git
+          dest: .dotfiles
     # cm: section=LinkFiles
     # cm: json={"notes":"Explain items - the only way to iterate"}
     - name: Link configuration files

@@ -1,7 +1,11 @@
 ---
 - hosts: all
+  # cm: section=become
+  # cm: json={ "note": "become can be for individual tasks and playbook-wide" }
   become: true
+  # cm: endsection
   tasks:
+    # cm: section=install
     - name: Install packages
       apt: "pkg={{ item }} state=present"
       items:
@@ -10,12 +14,16 @@
           - mysql-server
           - php5
           - libapache2-mod-php5
+
+    # cm: section=include
+    # cm: json={ "note": "modularization, with parameters" }
     - name: Create vhost example1.dev
       include: create_vhost.yml host_name=example1.dev
 
     - name: Create vhost example2.dev
       include: create_vhost.yml host_name=example2.dev
 
+  # cm: section=handler
   handlers:
     - name: restart apache
       service: name=apache2 state=restarted
